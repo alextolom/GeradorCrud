@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -81,6 +81,23 @@ public class GerarClasseDeControle {
                 + "    }\n"
                 + ""
         );
+        
+        //método inserir
+        codigoGerado.add("    public void inserir(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ " {\n"
+                + "        lista.add(" + ferramentas.plMinus(nomeClasse)+ ");\n"
+                        + "    }\n");
+        
+        //método alterar
+/****/  codigoGerado.add("    void alterar(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ "Original" + ", " + nomeClasse + ferramentas.plMinus(nomeClasse)+ "Alterado) {\n"             + "        lista.set(lista.indexOf(" + ferramentas.plMinus(nomeClasse) + "Original), " + ferramentas.plMinus(nomeClasse) + "Alterado);\n" 
+                        + "    }\n"
+                        + "    public List<String> listar() {\n"
+                        + "        List<String> ls = new ArrayList<>();\n"
+                        + "        for (int i = 0; i < lista.size(); i++) {\n"
+                        + "            ls.add(\"\"\n"
+                        + "                    + lista.get(i).get" + ferramentas.plMaius(nomeChave) + "() + \";\"\n"
+                        + "                    + lista.get(i).get" + ferramentas.plMaius(nomeChave) + "\n" 
+                        + "    }");
+        
 
         codigoGerado.add("\n}");
 
