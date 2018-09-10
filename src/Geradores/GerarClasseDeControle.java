@@ -83,20 +83,36 @@ public class GerarClasseDeControle {
         );
         
         //método inserir
-        codigoGerado.add("    public void inserir(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ " {\n"
+        codigoGerado.add("    public void inserir(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ ") {\n"
                 + "        lista.add(" + ferramentas.plMinus(nomeClasse)+ ");\n"
                         + "    }\n");
+       
         
         //método alterar
-/****/  codigoGerado.add("    void alterar(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ "Original" + ", " + nomeClasse + ferramentas.plMinus(nomeClasse)+ "Alterado) {\n"             + "        lista.set(lista.indexOf(" + ferramentas.plMinus(nomeClasse) + "Original), " + ferramentas.plMinus(nomeClasse) + "Alterado);\n" 
+        
+/****/  codigoGerado.add("    void alterar(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ "Original" + ", " + nomeClasse + " " + ferramentas.plMinus(nomeClasse)+ "Alterado) {\n"             + "        lista.set(lista.indexOf(" + ferramentas.plMinus(nomeClasse) + "Original), " + ferramentas.plMinus(nomeClasse) + "Alterado);\n" 
                         + "    }\n"
                         + "    public List<String> listar() {\n"
                         + "        List<String> ls = new ArrayList<>();\n"
                         + "        for (int i = 0; i < lista.size(); i++) {\n"
                         + "            ls.add(\"\"\n"
-                        + "                    + lista.get(i).get" + ferramentas.plMaius(nomeChave) + "() + \";\"\n"
-                        + "                    + lista.get(i).get" + ferramentas.plMaius(nomeChave) + "\n" 
-                        + "    }");
+                        );
+        for (String s : arquivoBase) {
+            String aux1[] = s.split(";");
+            codigoGerado.add("                    + lista.get(i).get" + ferramentas.plMaius(aux1[1]) + "() + \";\""
+            );
+        }
+        codigoGerado.add("            );\n"
+                + "        }\n"
+                + "        return ls;\n"
+                + "    }\n");
+
+        //método excluir
+        codigoGerado.add("public void excluir(" + nomeClasse + " " + ferramentas.plMinus(nomeClasse) + "){\n"
+                + "        lista.remove(" + ferramentas.plMinus(nomeClasse) + ");\n"
+                        + "    }\n");
+        
+
         
 
         codigoGerado.add("\n}");
@@ -109,3 +125,5 @@ public class GerarClasseDeControle {
     }
 
 }
+
+
